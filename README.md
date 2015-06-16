@@ -11,4 +11,4 @@ gulp test to launch your unit tests with Karma
 gulp test:auto to launch your unit tests with Karma in watch mode
 gulp protractor to launch your e2e tests with Protractor
 gulp protractor:dist to launch your e2e tests with Protractor on the dist files
-gulp deploy to copy build into silex-bundle
+gulp deploy to copy build into silex-provider

@@ -1,6 +1,6 @@
 <?php
 
-namespace Alchemy\Phrasea\LightBoxStandalone;
+namespace Alchemy\Phrasea\Lightbox;
 
 use Alchemy\Phrasea\Application\Helper\DispatcherAware;
 use Alchemy\Phrasea\Controller\Controller;
@@ -16,7 +16,7 @@ use Alchemy\Phrasea\Model\Repositories\BasketRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class LightBoxController extends Controller
+class LightboxController extends Controller
 {
     use DispatcherAware;
 

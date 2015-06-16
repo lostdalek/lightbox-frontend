@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Alchemy\Phrasea\LightBoxStandalone;
+namespace Alchemy\Phrasea\Lightbox;
 
 use Alchemy\Phrasea\Application as PhraseaApplication;
 use Alchemy\Phrasea\ControllerProvider\ControllerProviderTrait;
@@ -21,7 +21,7 @@ use Silex\ServiceProviderInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 
-class LightBoxServiceProvider implements ControllerProviderInterface, ServiceProviderInterface
+class LightboxServiceProvider implements ControllerProviderInterface, ServiceProviderInterface
 {
     use ControllerProviderTrait;
 
@@ -31,7 +31,7 @@ class LightBoxServiceProvider implements ControllerProviderInterface, ServicePro
           __DIR__.'/views'
         );
         $app['controller.lightbox2'] = $app->share(function (PhraseaApplication $app) {
-            return (new LightBoxController($app))
+            return (new LightboxController($app))
               ->setDispatcher($app['dispatcher']);
         });
     }

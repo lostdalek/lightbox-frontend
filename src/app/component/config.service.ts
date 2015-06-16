@@ -6,34 +6,12 @@ module App.Component {
 
     import Configuration = App.Core.Configuration;
 
-    /*interface ILocale {
-        numberFormat?: string;
-    }
-
-    interface IConfig {
-        locale?: string;
-        localisation?: ILocale;
-        baseUrl?: string;
-        basePath?: string;
-        assetsPath?: string
-    }*/
-
     interface IConfigService {
-        // setConfig(config: IConfig): any;
         getConfig(): any;
     }
 
     export class ConfigService implements ng.IServiceProvider {
         protected config: any = Configuration.appConfig;
-        /*{
-            locale: 'en',
-            localisation: {
-                numberFormat: ',.0f'
-            },
-            baseUrl: 'http://localhost:3000/',
-            basePath: '',
-            assetsPath: ''
-        };*/
 
         /**
          * register global envConfiguration

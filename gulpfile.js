@@ -7,7 +7,7 @@ var wrench = require('wrench');
 var options = {
   src: 'src',
   dist: 'dist',
-  deploy: 'silex-bundle',
+  deploy: 'silex-provider',
   tmp: '.tmp',
   e2e: 'e2e',
   errorHandler: function(title) {
