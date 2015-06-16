@@ -1,0 +1,15 @@
+{
+  "name": "alchemy/lightbox-frontend",
+  "license": "GPL-3.0",
+  "autoload": {
+    "psr-4": { "Alchemy\\Phrasea\\LightBoxStandalone\\": "silex-bundle/" }
+  },
+  "require": {
+    "php": ">=5.5"
+  },
+  "extra":        {
+    "branch-alias": {
+      "dev-master": "4.0.x-dev"
+    }
+  }
+}
