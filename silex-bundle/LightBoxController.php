@@ -20,14 +20,6 @@ class LightBoxController extends Controller
 {
     use DispatcherAware;
 
-    public function indexAction(Application $app)
-    {
-        return $app['twig']->render('lightboxLayout.twig', array(
-          'basePath' => 'yo'
-        ));
-        $this->app = $app;
-    }
-
     public function rootAction()
     {
         try {
@@ -46,12 +38,6 @@ class LightBoxController extends Controller
         $template = 'lightboxLayout.twig';
 
         return $this->renderResponse($template, []);
-
-        return $this->renderResponse($template, [
-          'baskets_collection' => $basket_collection,
-          'module_name' => 'Lightbox',
-          'module' => 'lightbox',
-        ]);
     }
 
     /**
