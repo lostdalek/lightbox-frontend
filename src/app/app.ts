@@ -5,7 +5,7 @@ module App {
 
     var mainModule: string = App.Core.Configuration.appModuleName;
 
-    var app = angular.module(mainModule, [
+    angular.module(mainModule, [
             'ngAnimate',
             'ngCookies',
             'ngTouch',
@@ -13,11 +13,8 @@ module App {
             'restangular',
             'ui.router',
             'ui.bootstrap'
-    ]);
-
-
-    // override default configuration:
-    app
+        ])
+        // override default configuration:
         .config(function (ConfigServiceProvider: App.Component.ConfigService) {
 
             ConfigServiceProvider.setConfig({
