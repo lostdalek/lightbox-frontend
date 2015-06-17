@@ -1,4 +1,4 @@
-module App {
+module App.Module.MainLayout {
     'use strict';
 
     import Configuration = App.Core.Configuration;
@@ -25,7 +25,7 @@ module App {
         assetsPath: string;
     }
 
-    export class MainCtrl implements IMainScope{
+    export class MainLayoutCtrl implements IMainScope{
         public assetsPath = '';
         public awesomeThings = new Array<Thing>();
         public isToggledLeftSidebar = false;
@@ -115,6 +115,6 @@ module App {
     }
 
     angular.module(Configuration.appModuleName)
-        .controller('MainCtrl', MainCtrl);
+        .controller('MainLayoutCtrl', MainLayoutCtrl);
 
 }

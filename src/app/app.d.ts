@@ -7,6 +7,6 @@
 /// <reference path="app.ts" />
 /// <reference path="component/config.service.ts" />
 /// <reference path="component/navbar/navbar.controller.ts" />
-/// <reference path="main/main.controller.ts" />
+/// <reference path="module/mainLayout/mainLayout.controller.ts" />
 
 // }

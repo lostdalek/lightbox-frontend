@@ -1,7 +1,7 @@
 /**
  *
  */
-module App.Component {
+module App.Route {
     'use strict';
 
     import Configuration = App.Core.Configuration;
@@ -14,8 +14,8 @@ module App.Component {
             $stateProvider
                 .state('home', {
                     url: '/',
-                    templateUrl: 'app/main/main.html',
-                    controller: 'MainCtrl as main'
+                    templateUrl: 'app/module/mainLayout/mainLayout.html',
+                    controller: 'MainLayoutCtrl as main'
                 });
 
             $urlRouterProvider.otherwise('/');

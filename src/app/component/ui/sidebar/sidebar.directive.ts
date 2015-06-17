@@ -39,7 +39,7 @@ module App.Component.Ui.Sidebar {
             */
         }
 
-        static logWatch(value: any) {
+        public logWatch(value: any) {
             console.log('logged', value)
         }
     }
