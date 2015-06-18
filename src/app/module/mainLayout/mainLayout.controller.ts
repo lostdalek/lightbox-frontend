@@ -23,17 +23,32 @@ module App.Module.MainLayout {
         isToggledLeftSidebar: boolean;
         awesomeThings: Thing[];
         assetsPath: string;
+        mediaCollection: any;
+        mediaData: Object;
     }
 
     export class MainLayoutCtrl implements IMainScope{
         public assetsPath = '';
         public awesomeThings = new Array<Thing>();
         public isToggledLeftSidebar = false;
+        public mediaCollection = [];
+        public mediaData = {
+            promise: null,
+            message:'',
+            backdrop:true,
+            templateUrl:'application/tpl/loading.bounce.html',
+            delay:0,
+            minDuration:0
+        };
+        private $q;
+        private $timeout;
 
-
-        static $inject = ['$scope', 'ConfigService'];
+        static $inject = ['$scope', '$q', '$timeout', 'ConfigService'];
         /* @ngInject */
-        constructor($scope: ng.IScope, appConfigService: App.Component.ConfigService) {
+        constructor($scope: ng.IScope, $q: ng.IQService, $timeout: ng.ITimeoutService, appConfigService: App.Component.ConfigService) {
+            console.log(this);
+            this.$q = $q;
+            this.$timeout = $timeout;
             var appConfig = appConfigService.getConfig();
             this.assetsPath = appConfig.assetsPath;
 
@@ -106,11 +121,47 @@ module App.Module.MainLayout {
                 this.awesomeThings.push(awesomeThing);
             });
 
-
+            // generate a dummy collection:
+            this.refreshCollection();
         }
 
         public toggleLeftSideBar(): void {
             this.isToggledLeftSidebar = !this.isToggledLeftSidebar;
+        }
+
+        public refreshCollection(): void {
+
+            this.mediaData = {
+                promise: this.fetchCollection().then(function(response){
+                    console.log('ok got it', response)
+                    return response;
+                }),
+                message:'',
+                backdrop:true,
+                templateUrl:'app/component/vendor/angular-busy/loading.bounce.html',
+                delay:0,
+                minDuration:0
+            };
+        }
+
+        private fetchCollection() {
+
+            var defer = this.$q.defer();
+
+            this.$timeout(function () {
+                var coll = [];
+
+                // generate a dummy collection:
+                for(var i=0; i<=10; i++) {
+                    coll.push({
+                        name: 'dummy media '+Math.random().toString(36).substring(7),
+                        src: 'src '+i
+                    })
+                }
+                defer.resolve(coll);
+            }, 300);
+
+            return defer.promise;
         }
     }
 

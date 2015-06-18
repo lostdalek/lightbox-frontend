@@ -12,7 +12,10 @@ module App {
             'ngSanitize',
             'restangular',
             'ui.router',
-            'ui.bootstrap'
+            'ui.bootstrap',
+            'cgBusy',
+            'alchemy-fr.ng.mediaCanvas',
+            'alchemy-fr.ng.mediaCarousel'
         ])
         // override default configuration:
         .config(function (ConfigServiceProvider: App.Component.ConfigService) {

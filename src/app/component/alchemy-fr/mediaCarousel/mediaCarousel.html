@@ -1,0 +1,26 @@
+<div cg-busy="mediaCarousel.deferredData">
+    <!--<div class="owl-carousel owl-theme owl-loaded">
+        <div class="item" ng-click="mediaCarousel.selectMedia()"><h4>1 {{mediaCarousel.name}}</h4></div>
+        <div class="item"><h4>2</h4></div>
+        <div class="item"><h4>3</h4></div>
+        <div class="item"><h4>4</h4></div>
+        <div class="item"><h4>5</h4></div>
+        <div class="item"><h4>6</h4></div>
+        <div class="item"><h4>7</h4></div>
+        <div class="item"><h4>8</h4></div>
+        <div class="item"><h4>9</h4></div>
+        <div class="item"><h4>10</h4></div>
+        <div class="item"><h4>11</h4></div>
+        <div class="item"><h4>12</h4></div>
+        <div class="item"><h4>13</h4></div>
+        <div class="item"><h4>14</h4></div>
+
+    </div>-->
+    <div owl-carousel="mediaCarousel.mediaCollection" nav="true" stagePadding="50">
+        <div class="item" ng-click="mediaCarousel.selectMedia(item)">
+            <h4>{{ item.name }}</h4>
+            <p>{{item.src}}</p>
+
+        </div>
+    </div>
+</div>

@@ -19,6 +19,20 @@
                 <p><a class="btn btn-lg btn-success" ng-href="#">Splendid!</a></p>
             </div>
 
+            <p >
+                <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas" ng-click="main.refreshCollection()">refresh carousel</button>
+            </p>
+
+            <alchemy-media-carousel collection="main.mediaCollection" deferred-data="main.mediaData">
+                <div> Your Content </div>
+                <div> Your Content </div>
+                <div> Your Content </div>
+                <div> Your Content </div>
+                <div> Your Content </div>
+                <div> Your Content </div>
+                <div> Your Content </div>
+            </alchemy-media-carousel>
+
             <div class="row">
                 <div class="col-sm-6 col-md-4" ng-repeat="awesomeThing in main.awesomeThings | orderBy:'rank'">
                     <div class="thumbnail">

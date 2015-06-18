@@ -50,7 +50,6 @@ module App.Component {
         }
 
 
-        // provider's factory function
         /**
          * Provider Factory function
          * Accessible once angular's config phase is complete
