@@ -3,7 +3,7 @@
 module App {
     'use strict';
 
-    var mainModule: string = App.Core.Configuration.appModuleName;
+    var mainModule: string = App.Config.appModuleName;
 
     angular.module(mainModule, [
             'ngAnimate',
@@ -17,18 +17,23 @@ module App {
             'alchemy-fr.ng.mediaCanvas',
             'alchemy-fr.ng.mediaCarousel'
         ])
-        // override default configuration:
-        .config(function (ConfigServiceProvider: App.Component.ConfigService) {
-
-            ConfigServiceProvider.setConfig({
-                locale: 'ene',
-                a: {
-                    b: 'c',
-                    bb: {
-                        c : 'd'
-                    }
-                },
-                'a.b' : 'c'
-            });
-        });
+        .run(function (
+            $rootScope: ng.IRootScopeService,
+            $state: ng.ui.IState,
+            $stateParams: ng.ui.IState) {
+                (<any>$rootScope).$state = $state;
+                (<any>$rootScope).$stateParams = $stateParams;
+                /*
+                (<any>$rootScope).$on('$stateNotFound', function (event, unfoundState, fromState, fromParams) {
+                    console.log('STATE NOT FOUND>', unfoundState);
+                });
+                (<any>$rootScope).$on('$stateChangeError', function (event, next, toParams, fromState, fromParams, error) {
+                    console.log('STATE ERROR>', next, error);
+                });
+                $rootScope.$on('$stateChangeSuccess', function (event, next, fromState, fromParams) {
+                    onsole.log('STATE SUCCESS>', next)
+                });
+                */
+            }
+        );
 }

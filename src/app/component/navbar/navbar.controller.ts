@@ -3,7 +3,7 @@
 module App {
   'use strict';
 
-    import Configuration = App.Core.Configuration;
+    import Configuration = App.Config;
 
     interface INavbarScope extends ng.IScope {
         date: Date

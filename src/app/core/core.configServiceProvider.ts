@@ -1,10 +1,10 @@
 /**
  * Configuration Service Provider
  */
-module App.Component {
+module App.Core {
     'use strict';
 
-    import Configuration = App.Core.Configuration;
+    import Configuration = App.Config;
 
     interface IConfigService {
         getConfig(): any;

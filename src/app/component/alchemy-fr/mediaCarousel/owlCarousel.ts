@@ -2,16 +2,13 @@
 module App.Component.Ui.MediaCarousel {
     'use strict';
 
-    export class OwlCarousel implements ng.IDirective
-    {
+    export class OwlCarousel implements ng.IDirective {
         public restrict = 'A';
         public transclude = true;
-        public link: (scope: ng.IScope, element: ng.IAugmentedJQuery, attrs: ng.IAttributes, ctrl: any, $transclude) => void;
+        public link: (scope: ng.IScope, element: ng.IAugmentedJQuery, attrs: ng.IAttributes, ctrl: any, $transclude: any) => void;
 
-        constructor(private $parse: ng.IModelParser)
-        {
-            this.link = (scope: ng.IScope, element: ng.IAugmentedJQuery, attrs: ng.IAttributes, ctrl: any, $transclude) =>
-            {
+        constructor($parse: ng.IModelParser) {
+            this.link = (scope: ng.IScope, element: ng.IAugmentedJQuery, attrs: ng.IAttributes, ctrl: any, $transclude: any) => {
                 var owlOptions = [
                     'items',
                     'margin',
@@ -125,8 +122,8 @@ module App.Component.Ui.MediaCarousel {
                     owlCarousel = $el.data('owlCarousel');
                 });
 
-                $el.on('mousewheel', '.owl-stage', function (e) {
-                    if (e.deltaY>0) {
+                $el.on('mousewheel', '.owl-stage', function (e: any) {
+                    if (e.deltaY > 0) {
                         $el.trigger('next.owl');
                     } else {
                         $el.trigger('prev.owl');
@@ -136,10 +133,8 @@ module App.Component.Ui.MediaCarousel {
             };
         }
 
-        public static Factory(): ng.IDirectiveFactory
-        {
-            var directive = ($parse: ng.IModelParser) =>
-            {
+        public static Factory(): ng.IDirectiveFactory {
+            var directive = ($parse: ng.IModelParser) => {
                 return new OwlCarousel($parse);
             };
 

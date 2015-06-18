@@ -19,7 +19,7 @@ module App.Component.Ui.MediaCarousel {
     }
 
     export class MediaCarouselLink {
-        constructor(scope: ng.IScope, element: ng.IAugmentedJQuery, attrs: ng.IAttributes, ctrl: IMediaCarouselScope) {}
+        // constructor(scope: ng.IScope, element: ng.IAugmentedJQuery, attrs: ng.IAttributes, ctrl: IMediaCarouselScope) {}
     }
 
     export class MediaCarouselController {
@@ -29,7 +29,7 @@ module App.Component.Ui.MediaCarousel {
 
         static $inject = ['$element', '$scope'];
 
-        constructor(public $element: JQuery, public $scope: IMediaCarouselScope) {
+        constructor($element: JQuery, $scope: IMediaCarouselScope) {
 
             this.deferredData = $scope.mediaCarousel.deferredData;
 
@@ -41,21 +41,20 @@ module App.Component.Ui.MediaCarousel {
         }
 
         public populateCarousel(deferedData) {
-            if( deferedData.promise ) {
+            if (deferedData.promise) {
                 deferedData.promise.then((response) => {
                     this.mediaCollection = response;
-                    console.log('ok do it', response)
-                })
+                });
             }
         }
 
         public selectMedia(media: App.Core.IMedia): void {
-            console.log('selected media', media)
+            console.log('selected media', media);
         }
     }
 
 
-    angular.module('alchemy-fr.ng.mediaCarousel',[])
+    angular.module('alchemy-fr.ng.mediaCarousel', [])
         .directive('alchemyMediaCarousel', function (): ng.IDirective {
             return {
                 restrict: 'EA',

@@ -2,7 +2,7 @@
 module App.Component.Ui.Sidebar {
     'use strict';
 
-    import Configuration = App.Core.Configuration;
+    import Configuration = App.Config;
 
     export interface ISidebarScope extends ng.IScope {
         name: string;
@@ -12,16 +12,16 @@ module App.Component.Ui.Sidebar {
     }
 
     export class SidebarLink {
-        constructor(scope: ng.IScope, element: ng.IAugmentedJQuery, attrs: ng.IAttributes, ctrl: ISidebarScope) {
-        }
+        // constructor(scope: ng.IScope, element: ng.IAugmentedJQuery, attrs: ng.IAttributes, ctrl: ISidebarScope) {}
     }
 
     export class SidebarController {
+        static $inject = ['$element', '$scope'];
         public name = '';
         public isToggled = false;
 
-        static $inject = ['$element', '$scope'];
-        constructor(public $element: JQuery, public $scope: ISidebarScope) {
+
+        constructor($element: JQuery, $scope: ISidebarScope) {
 
             this.name = 'sidebar name';
 
@@ -40,7 +40,7 @@ module App.Component.Ui.Sidebar {
         }
 
         public logWatch(value: any) {
-            console.log('logged', value)
+            console.log('logged', value);
         }
     }
 

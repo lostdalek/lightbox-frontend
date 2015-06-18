@@ -1,7 +1,7 @@
-module App.Core {
+module App {
     'use strict';
 
-    export class Configuration {
+    export class Config {
         static appModuleName: string = 'lightboxApp';
         static appConfig: App.Core.IConfig = {
             locale: 'en',

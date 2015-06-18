@@ -1,7 +1,7 @@
 module App.Module.MainLayout {
     'use strict';
 
-    import Configuration = App.Core.Configuration;
+    import Configuration = App.Config;
 
     class Thing {
         public rank: number;
@@ -34,18 +34,18 @@ module App.Module.MainLayout {
         public mediaCollection = [];
         public mediaData = {
             promise: null,
-            message:'',
-            backdrop:true,
-            templateUrl:'application/tpl/loading.bounce.html',
-            delay:0,
-            minDuration:0
+            message: '',
+            backdrop: true,
+            templateUrl: 'application/tpl/loading.bounce.html',
+            delay: 0,
+            minDuration: 0
         };
         private $q;
         private $timeout;
 
         static $inject = ['$scope', '$q', '$timeout', 'ConfigService'];
         /* @ngInject */
-        constructor($scope: ng.IScope, $q: ng.IQService, $timeout: ng.ITimeoutService, appConfigService: App.Component.ConfigService) {
+        constructor($scope: ng.IScope, $q: ng.IQService, $timeout: ng.ITimeoutService, appConfigService: App.Core.ConfigService) {
             console.log(this);
             this.$q = $q;
             this.$timeout = $timeout;
@@ -132,15 +132,14 @@ module App.Module.MainLayout {
         public refreshCollection(): void {
 
             this.mediaData = {
-                promise: this.fetchCollection().then(function(response){
-                    console.log('ok got it', response)
+                promise: this.fetchCollection().then(function (response) {
                     return response;
                 }),
-                message:'',
-                backdrop:true,
-                templateUrl:'app/component/vendor/angular-busy/loading.bounce.html',
-                delay:0,
-                minDuration:0
+                message: '',
+                backdrop: true,
+                templateUrl: 'app/component/vendor/angular-busy/loading.bounce.html',
+                delay: 0,
+                minDuration: 0
             };
         }
 
@@ -152,11 +151,11 @@ module App.Module.MainLayout {
                 var coll = [];
 
                 // generate a dummy collection:
-                for(var i=0; i<=10; i++) {
+                for (var i = 0; i <= 10; i++) {
                     coll.push({
-                        name: 'dummy media '+Math.random().toString(36).substring(7),
-                        src: 'src '+i
-                    })
+                        name: 'dummy media ' + Math.random().toString(36).substring(7),
+                        src: 'src ' + i
+                    });
                 }
                 defer.resolve(coll);
             }, 300);
