@@ -1,0 +1,47 @@
+// bower:less
+// endbower
+@import "variables";
+// injector
+// endinjector
+@import "fonts";
+
+@import "type";
+@import "table";
+@import "modal";
+
+// custom styling
+.navblade.navbar {
+  img.logo {
+    margin-top: -15px;
+  }
+}
+
+.navblade-default {
+  background-image: url('../assets/images/bg_navblade.jpg');
+}
+
+// vertical align two cols:
+.vcenter {
+  display: inline-block;
+  vertical-align: middle;
+  float: none;
+}
+
+@iterations: 10;
+.make-vertical-offset (@index) when (@index > 0) {
+  .voffset-@{index} {
+    margin-top: ceil((@index ) *10px);
+  }
+  .make-vertical-offset(@index - 1);
+}
+
+.make-vertical-offset (0) {
+}
+
+.make-vertical-offset (@iterations);
+
+
+// fixes Less compilation, which remove duplicate border-top declaration:
+.caret {
+  border-top:   @caret-width-base dashed;
+}

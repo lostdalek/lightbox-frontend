@@ -1,0 +1,38 @@
+.table {
+  > tbody > tr {
+    > th,
+    > td {
+      //color: @brand-primary;
+    }
+  }
+}
+.table-hover {
+  > tbody > tr:hover {
+    > th,
+    > td {
+      color: @brand-primary;
+    }
+    background-color: @table-bg-hover;
+  }
+}
+
+.pagination-container {
+  border-top: 3px solid @brand-primary;
+  border-bottom: 1px solid @table-border-color;
+  margin-bottom: 20px;
+
+  .pagination {
+    display: block;
+    margin: 0;
+    > li > a, .pagination > li > span {
+      border-top: none;
+      border-bottom: none;
+      border-left: 1px solid @table-border-color;
+      border-right: 1px solid @table-border-color;
+    }
+  }
+  .btn-group {
+    border-left: 1px solid @table-border-color;
+    border-right: 1px solid @table-border-color;
+  }
+}

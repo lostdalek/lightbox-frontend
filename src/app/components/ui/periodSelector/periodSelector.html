@@ -1,0 +1,42 @@
+<div class="row period-selector">
+    <div class="col-md-4">
+        <p class="input-group">
+            <input type="text" class="form-control" ng-click="period.openStart($event)"
+                   datepicker-popup="{{period.dateFormat}}"
+                   ng-model="period.isolatedDateStart"
+                   is-open="period.openedStart"
+                   max-date="period.isolatedDateEnd"
+                   datepicker-options="period.dateOptions"
+                   date-disabled="disabled(date, mode)"
+                   ng-required="true"
+                   close-text="Close" />
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="period.openStart($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+        </p>
+    </div>
+
+    <div class="col-md-4">
+        <p class="input-group">
+            <input type="text" class="form-control"  ng-click="period.openEnd($event)"
+                   datepicker-popup="{{period.dateFormat}}"
+                   ng-model="period.isolatedDateEnd"
+                   is-open="period.openedEnd"
+                   min-date="period.isolatedDateStart"
+                   datepicker-options="period.dateOptions"
+                   date-disabled="disabled(date, mode)"
+                   ng-required="true"
+                   close-text="Close" />
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="period.openEnd($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+        </p>
+    </div>
+    <div class="col-md-4 col-sm-12">
+        <p >
+            <button type="button" class="btn btn-default btn-block" ng-disabled="{{!period.rangeIsValid}}"
+                    ng-click="period.submit($event)"><i
+                    class="glyphicon glyphicon-refresh"></i> actualiser</button>
+        </p>
+    </div>
+</div>

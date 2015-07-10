@@ -1,0 +1,30 @@
+<div class="row">
+    <div class="col-lg-8">
+        <ul class="pagination">
+            <li ng-if="boundaryLinks" ng-class="{disabled: noPrevious()}">
+                <a href ng-click="selectPage(1, $event)">{{getText('first')}}</a></li>
+            <li ng-if="directionLinks" ng-class="{disabled: noPrevious()}">
+                <a href ng-click="selectPage(page - 1, $event)">{{getText('previous')}}</a></li>
+            <li ng-repeat="page in pages track by $index" ng-class="{active: page.active}">
+                <a href ng-click="selectPage(page.number, $event)">{{page.text}}</a></li>
+            </ul>
+    </div>
+    <div class="col-lg-4">
+        <ul class="pagination pull-right">
+            <li ng-if="directionLinks" ng-class="{disabled: noNext()}">
+                <a href ng-click="selectPage(page + 1, $event)">{{getText('next')}}</a></li>
+            <li ng-if="boundaryLinks" ng-class="{disabled: noNext()}">
+                <a href ng-click="selectPage(totalPages, $event)">{{getText('last')}}</a></li>
+            </ul>
+        <div class="btn-group dropup pull-right" dropdown>
+            <span class="btn" dropdown-toggle>{{limit}} par page <span class="caret"></span>
+
+            </span>
+            <ul class="dropdown-menu" role="menu">
+                <li ><a href="#" ng-click="limit=25; $event.preventDefault()">25</a></li>
+                <li><a href="#"  ng-click="limit=50; $event.preventDefault()">50</a></li>
+                <li><a href="#"  ng-click="limit=100; $event.preventDefault()">100</a></li>
+            </ul>
+        </div>
+    </div>
+</div>

@@ -9,31 +9,31 @@ var tsd = require('tsd');
 var tsdJson = 'tsd.json';
 var tsdApi = new tsd.getAPI(tsdJson);
 
-module.exports = function() {
-  gulp.task('tsd:install', function () {
-    var bower = require(path.join(process.cwd(), 'bower.json'));
+gulp.task('tsd:install', function () {
+  var bower = require(path.join(process.cwd(), 'bower.json'));
 
-    var dependencies = [].concat(
+  var dependencies = [].concat(
       Object.keys(bower.dependencies),
       Object.keys(bower.devDependencies)
-    );
+  );
 
-    var query = new tsd.Query();
-    dependencies.forEach(function (dependency) {
-      query.addNamePattern(dependency);
-    });
+  var query = new tsd.Query();
+  dependencies.forEach(function (dependency) {
+    query.addNamePattern(dependency);
+  });
+  query.addNamePattern('karma-jasmine');
 
-    var options = new tsd.Options();
-    options.resolveDependencies = true;
-    options.overwriteFiles = true;
-    options.saveBundle = true;
+  var options = new tsd.Options();
+  options.resolveDependencies = true;
+  options.overwriteFiles = true;
+  options.saveBundle = true;
 
-    return tsdApi.readConfig()
+  return tsdApi.readConfig()
       .then(function () {
+        // Include manually-defined definitions, for cases where TSD name doesn't match bower name:
         tsdApi.context.config.getInstalled().forEach(function (inst) {
-            var def = tsd.Def.getFrom(inst.path);
-            console.log('def')
-            query.addNamePattern(def.project + '/' + def.name);
+          var def = tsd.Def.getFrom(inst.path);
+          query.addNamePattern(def.project + '/' + def.name);
         });
         return tsdApi.select(query, options);
       })
@@ -45,23 +45,22 @@ module.exports = function() {
         var removed = Object.keys(installResult.removed.dict);
         var skipped = Object.keys(installResult.skipped.dict);
 
-        written.forEach(function (dts) {
-          gutil.log('Definition file written: ' + dts);
-        });
-
-        removed.forEach(function (dts) {
-          gutil.log('Definition file removed: ' + dts);
-        });
-
-        skipped.forEach(function (dts) {
-          gutil.log('Definition file skipped: ' + dts);
-        });
+      written.forEach(function (dts) {
+        gutil.log('Definition file written: ' + dts);
       });
-  });
 
-  gulp.task('tsd:purge', function () {
-    return tsdApi.purge(true, true);
-  });
+      removed.forEach(function (dts) {
+        gutil.log('Definition file removed: ' + dts);
+      });
 
-  gulp.task('tsd', ['tsd:install']);
-};
+      skipped.forEach(function (dts) {
+        gutil.log('Definition file skipped: ' + dts);
+      });
+    });
+});
+
+gulp.task('tsd:purge', function () {
+  return tsdApi.purge(true, true);
+});
+
+gulp.task('tsd', ['tsd:install']);

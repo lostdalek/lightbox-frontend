@@ -16,6 +16,10 @@
         return {
             basePath: '{{ app.request.basepath }}/',
             assetsPath: '{{ app.request.basepath }}/assets/',
+            phraseanetApi: {
+                baseUrl: '{{ app.request.schemeAndHttpHost ~ app.request.baseUrl }}/',
+                basePath: '/lightbox/'
+            },
             baseUrl: '{{ app.request.schemeAndHttpHost ~ app.request.baseUrl }}/'
         };
     })();

@@ -1,0 +1,33 @@
+<div class="row">
+    <div class="col-lg-12">
+        <form  name="searchForm" ng-submit="search.submitForm(searchForm,search.model)" class="form-horizontal">
+            <div class="input-group input-group-lg" id="adv-search">
+                <div class="input-group-btn dropdown dropdown-lg" dropdown auto-close="always">
+
+                    <button type="button" class="btn btn-primary dropdown-toggle" dropdown-toggle
+                            aria-expanded="false">
+                        {{search.selectedField.value}}
+                        <span class="caret"></span></button>
+
+                    <ul class="dropdown-menu dropdown-menu-left" role="menu">
+                    <!-- don't close automatically: ng-click="$event.stopPropagation()"-->
+
+                            <li ng-repeat="f in search.formOptions.fieldSelection">
+                                <a ng-click="search.selectField(f)">{{f.value}}</a>
+                            </li>
+                    </ul>
+                </div>
+                <input type="text" class="form-control input-search"
+                       placeholder="{{search.formOptions.placeholder}}"
+                       ng-model="search.model['searchInput']"/>
+                <span class="input-group-btn">
+                    <button type="submit" class="btn btn-default"  ng-click="searchForm.submit()">
+                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                </span>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+

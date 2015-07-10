@@ -1,0 +1,28 @@
+<alchemy-navblade
+        logo-src="main.navbladeConfig.logo.src"
+        logo-link="main.navbladeConfig.logo.link"
+        classes="main.navbladeConfig.classes"
+        navigation="main.navbladeConfig.navigation">
+</alchemy-navblade>
+
+<div class="container-fluid">
+    <div class="row row-offcanvas row-offcanvas-left" ng-class="{'active':main.isToggledLeftSidebar}">
+        <alchemy-sidebar
+                title="main.sidebarConfig.title"
+                is-toggled="main.isToggledLeftSidebar"
+                navigation="main.sidebarConfig.navigation">
+        </alchemy-sidebar>
+        <div class="col-xs-12 col-sm-9 content">
+
+            <div ui-view>
+
+            </div>
+            <!--            <p>
+                            <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas" ng-click="main.toggleLeftSideBar()">Toggle nav {{main.isToggledLeftSidebar}}</button>
+                        </p>-->
+        </div>
+
+    </div>
+    <div></div>
+</div>
+

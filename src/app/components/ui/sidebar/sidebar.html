@@ -1,0 +1,11 @@
+<div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+    <p>{{sidebar.title}}</p>
+    <ul class="nav">
+        <li ng-repeat="nav in sidebar.navigation"  ng-class="{active: sidebar.isActive(nav)}">
+            <a ng-href="{{sidebar.getLink(nav)}}" ui-sref="{{nav.sref}}">
+                <i ng-if="nav.icon" class="{{nav.iconClasses}}"></i>
+                {{nav.label}}
+            </a>
+        </li>
+    </ul>
+</div>

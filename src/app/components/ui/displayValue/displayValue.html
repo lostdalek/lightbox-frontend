@@ -1,0 +1,33 @@
+
+<span ng-if="cell.type == 'link'">
+        <a class="btn btn-default btn-xs btn-round btn-info" ui-sref="{{cell.options.state}}({id:cell.value})"
+           has-permission>
+            <i class="fa fa-pencil"></i>
+        </a>
+    </span>
+<span ng-if="cell.type == 'links'">
+        <span ng-repeat="link in cell.options.links">
+            <a
+                    class=" {{link.linkClass}}"
+                    ui-sref="{{link.state}}{{link.stateParams}}"
+
+                    >
+                <span ng-if="!link.icon">{{link.preLabel}}{{cell.value}}</span>
+                <i class="{{link.iconClasses}}" ng-if="link.icon"></i>
+            </a>
+        </span>
+
+    </span>
+<span ng-if="cell.type == 'integer'">
+    {{cell.value | byCastKey: cell.type}}
+</span>
+<span ng-if="cell.type == 'string'">
+    {{cell.value}}
+</span>
+<span ng-if="cell.type == 'date'">
+    {{cell.value | byCastKey: cell.type}}
+</span>
+<span ng-if="cell.type == 'datetime'">
+    {{cell.value | byCastKey: cell.type}}
+</span>
+<span ng-include="cell.options.useTpl" ng-if="cell.type == 'composite'"></span>

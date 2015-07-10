@@ -1,30 +1,32 @@
 'use strict';
 
+var path = require('path');
 var gulp = require('gulp');
+var conf = require('./conf');
 
 var $ = require('gulp-load-plugins')({
     pattern: ['gulp-*', 'main-bower-files', 'uglify-save-license', 'del']
 });
 
-module.exports = function(options) {
 
-    gulp.task('copy-assets', function () {
-        return gulp.src([
-            options.dist + '/{assets,fonts,scripts,styles}/**/*'
-        ])
-            .pipe(gulp.dest(options.deploy + '/public'));
-    });
 
-    gulp.task('copy-templates', function () {
-        return gulp.src([
-            options.dist + '/*.twig'
-        ])
-            .pipe(gulp.dest(options.deploy + '/views'));
-    });
+gulp.task('copy-assets', ['build'], function () {
+    return gulp.src([
+        conf.paths.dist + '/{assets,fonts,scripts,styles}/**/*'
+    ])
+        .pipe(gulp.dest(conf.paths.deploy));
+});
+gulp.task('copy-assets:dev', ['build:dev'], function () {
+    return gulp.src([
+        conf.paths.dist + '/{assets,fonts,scripts,styles}/**/*'
+    ])
+        .pipe(gulp.dest(conf.paths.deploy));
+});
 
-/*    gulp.task('clean', ['tsd:purge'], function (done) {
-        $.del([options.dist + '/', options.tmp + '/'], done);
-    });*/
+gulp.task('deploy', ['copy-assets']);
 
-    gulp.task('deploy', ['copy-assets', 'copy-templates']);
-};
+gulp.task('deploy:dev', ['build:dev'], function(){
+    gulp.start('copy-assets:dev')
+});
+
+

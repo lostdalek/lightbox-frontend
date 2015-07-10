@@ -1,0 +1,28 @@
+<nav class="navblade navbar {{navblade.classes}}">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="{{navblade.logoLink}}">
+                <img src="{{navblade.logoSrc}}" class="logo">
+            </a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-6">
+            <ul class="nav navbar-nav navbar-right">
+                <li ng-repeat="nav in navblade.navigation" dropdown>
+                    <a href class="dropdown-toggle {{nav.classes}}" dropdown-toggle>
+                        <span ng-if="!nav.labelAsImage">{{nav.label}}</span>
+
+                        <i ng-if="nav.icon" class="{{nav.iconClasses}}"></i>
+                        <span ng-if="nav.children.length > 0 " class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li ng-repeat="child in nav.children">
+                            <a href>{{child.label}}</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+

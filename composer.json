@@ -1,13 +1,15 @@
 {
   "name": "alchemy/lightbox-frontend",
-  "license": "GPL-3.0",
+  "license": "MIT",
   "autoload": {
-    "psr-4": { "Alchemy\\Phrasea\\Lightbox\\": "silex-provider/" }
+    "psr-4": {
+      "Alchemy\\Phrasea\\Lightbox\\": "silex-provider/"
+    }
   },
   "require": {
     "php": ">=5.5"
   },
-  "extra":        {
+  "extra": {
     "branch-alias": {
       "dev-master": "4.0.x-dev"
     }

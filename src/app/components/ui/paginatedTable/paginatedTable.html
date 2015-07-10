@@ -1,0 +1,52 @@
+<div cg-busy="table.dataCollectionReady">
+
+    <table st-table="table.dataCollection" class="table table-hover table-striped"
+           ng-if="table.dataCollection.raw.length > 0">
+        <thead>
+        <thead>
+        <tr>
+            <th ng-repeat="row in table.dataCollection.head" ng-click="table.sortBy(row)"
+                ng-class="{'sort-active':table.isSortActive(row)}"
+                >
+
+                <i ng-class="table.getSortState(row)"></i>
+                {{row.title}}
+            </th>
+        </tr>
+        </thead>
+        </thead>
+        <tbody>
+        <tr ng-repeat="row in table.dataCollection.body">
+            <td ng-repeat="cell in row">
+                <alchemy-display-value source="cell" parent="row"></alchemy-display-value>
+            </td>
+
+        </tr>
+        <tr ng-if="table.dataCollection.raw.length == 0">
+            <td>no data</td>
+        </tr>
+        </tbody>
+    </table>
+    <div ng-if="table.paginationReady && table.totalItems > table.limit" class="pagination-container">
+        <pagination
+                ng-model="table.tableOptions.paginate.page"
+                ng-change="table.pageChange(table.tableOptions.paginate.page)"
+                total-items="table.totalItems" items-per-page="table.tableOptions.paginate.limit"
+                page="table.bigCurrentPage"
+                max-size="table.maxSize" class="pagination-md"
+                boundary-links="true" rotate="true" num-pages="table.numPages"
+                previous-text="&lsaquo;"
+                next-text="&rsaquo;"
+                first-text="&laquo;"
+                last-text="&raquo;"
+                limit="table.limit">
+        </pagination>
+    </div>
+
+
+    <div ng-include="table.tableOptions.placeholder.emptyData.tpl"
+         ng-if="table.dataCollection.raw.length == 0 && table.tableOptions.placeholder.emptyData.active"></div>
+
+    <div ng-include="table.tableOptions.placeholder.initData.tpl"
+         ng-if="table.firstTime && table.tableOptions.placeholder.initData.active"></div>
+</div>
