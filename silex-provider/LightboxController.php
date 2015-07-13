@@ -28,25 +28,10 @@ class LightboxController extends Controller
             return $this->app->redirectPath('logout');
         }
 
-        /** @var BasketRepository $repository */
-        $repository = $this->app['repo.baskets'];
-        $basket_collection = array_merge(
-          $repository->findActiveByUser($this->getAuthenticatedUser()),
-          $repository->findActiveValidationByUser($this->getAuthenticatedUser())
-        );
-
         $template = 'lightboxLayout.twig';
 
         return $this->renderResponse($template, []);
     }
 
-    /**
-     * @return bool
-     */
-    private function isBrowserNewGenerationOrMobile()
-    {
-        /** @var \Browser $browser */
-        $browser = $this->app['browser'];
-        return $browser->isNewGeneration() || $browser->isMobile();
-    }
+
 }

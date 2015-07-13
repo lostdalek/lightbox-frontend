@@ -1,4 +1,4 @@
-module App {
+
     'use strict';
 
     export class UnauthorizedController {
@@ -48,6 +48,6 @@ module App {
 
     }
 
-    App.getModule()
+    import {getModule} from '../app.module';      getModule()
         .controller('UnauthorizedController', UnauthorizedController);
-}
+

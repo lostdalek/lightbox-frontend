@@ -1,4 +1,4 @@
-module App {
+
     'use strict';
 
     export class RouterConfig {
@@ -50,6 +50,12 @@ module App {
                     controller: 'BasketController',
                     controllerAs: 'basket'
                 })
+                .state('main.basket.view', {
+                    url: '/view/{basketId}',
+                    templateUrl: 'app/modules/basket/basket.view.html',
+                    controller: 'BasketViewController',
+                    controllerAs: 'vm'
+                })
                 .state('main.theme', {
                     url: '/theme',
                     templateUrl: 'app/modules/theme/theme.html',
@@ -91,6 +97,6 @@ module App {
 
     }
 
-    App.getModule()
+    import {getModule} from '../app.module';      getModule()
         .config(RouterConfig);
-}
+

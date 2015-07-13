@@ -6,6 +6,11 @@
                 <i ng-if="nav.icon" class="{{nav.iconClasses}}"></i>
                 {{nav.label}}
             </a>
+            <ul class="dropdown-menu">
+                <li ng-repeat="child in nav.children">
+                    <a href>{{child.label}}</a>
+                </li>
+            </ul>
         </li>
     </ul>
 </div>

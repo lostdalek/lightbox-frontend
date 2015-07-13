@@ -10,7 +10,9 @@ var $ = require('gulp-load-plugins')();
 
   var tsProject = $.typescript.createProject({
     target: 'es5',
-    sortOutput: true
+    sortOutput: true,
+    module: 'commonjs',
+    typescript: require('typescript')
   });
 
   gulp.task('scripts', ['tsd:install'], function () {

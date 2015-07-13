@@ -1,4 +1,4 @@
-module App {
+import {ConfigService} from '../components/configuration/config.service';
     'use strict';
 
     /**
@@ -9,7 +9,7 @@ module App {
         /** @ngInject */
         constructor(RestangularProvider: restangular.IProvider,
                     _: _.LoDashStatic,
-                    ConfigServiceProvider: App.Components.ConfigService) {
+                    ConfigServiceProvider: ConfigService) {
 
             // default headers (overrided by api factories)
             RestangularProvider.setDefaultHeaders({
@@ -30,6 +30,6 @@ module App {
 
     }
 
-    App.getModule()
+    import {getModule} from '../app.module';      getModule()
         .config(ApiConfig);
-}
+

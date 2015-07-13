@@ -1,5 +1,4 @@
 
-module Components.Ui.Navblade {
     'use strict';
 
     interface INavigationBlade {
@@ -52,7 +51,7 @@ module Components.Ui.Navblade {
     }
 
 
-    App.getModule()
+    import {getModule} from '../../../app.module';      getModule()
         .directive('alchemyNavblade', function (): ng.IDirective {
             return {
                 restrict: 'E',
@@ -70,4 +69,4 @@ module Components.Ui.Navblade {
                 controller: NavbladeController
             };
         });
-}
+

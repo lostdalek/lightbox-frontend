@@ -2,7 +2,7 @@ import {TableSchemaService} from '../../components/tableSchema.service';
 import {BasketRepository} from '../../components/lightboxApi/repositories/basket.repository';
     'use strict';
 
-    export class DashboardService {
+    export class BasketService {
         protected $filter;
         protected $q;
         protected tableSchemaService: TableSchemaService;
@@ -26,11 +26,14 @@ import {BasketRepository} from '../../components/lightboxApi/repositories/basket
             this.basketRepository = LightboxBasketRepository;
         }
 
+        public getBasketModel( basketId: number) {
+            return this.basketRepository.get(basketId);
+        }
         public getBasketCollection() {
             return this.basketRepository.getList();
         }
     }
 
     import {getModule} from '../../app.module';      getModule()
-        .service('DashboardService', DashboardService);
+        .service('BasketService', BasketService);
 

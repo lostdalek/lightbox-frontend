@@ -1,4 +1,4 @@
-module App.Components.Ui.PaginatedTable {
+
     'use strict';
 
     export class PaginationDecorator {
@@ -20,6 +20,6 @@ module App.Components.Ui.PaginatedTable {
 
     }
 
-    App.getModule()
+    import {getModule} from '../../../app.module';      getModule()
         .config(PaginationDecorator);
-}
+

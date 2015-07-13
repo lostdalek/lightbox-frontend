@@ -20,7 +20,15 @@
     "angular-busy": "~4.1.3",
     "angular-translate": "~2.7.2",
     "angular-local-storage": "~0.2.2",
-    "ui-router-extras": "~0.0.14"
+    "ui-router-extras": "~0.0.14",
+    "angular-strap": "~2.3.0"
+  },
+  "overrides": {
+    "angular-strap": {
+      "main": [
+        "dist/modules/collapse.js"
+      ]
+    }
   },
   "devDependencies": {
     "angular-mocks": "~1.3.16"

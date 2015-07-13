@@ -1,4 +1,4 @@
-module App.Components {
+import {TableSchemaService} from './tableSchema.service';
     'use strict';
 
     interface IMediaModelProperties {
@@ -9,14 +9,14 @@ module App.Components {
         protected defaultDisplayableRows = ['views'];
         protected tableSchema;
         protected $filter;
-        protected tableSchemaService: App.Components.TableSchemaService;
+        protected tableSchemaService: TableSchemaService;
         protected $translate;
 
 
         /** @ngInject */
         constructor($filter: ng.IFilterService,
                     $q: ng.IQService,
-                    TableSchemaService: App.Components.TableSchemaService
+                    TableSchemaService: TableSchemaService
         ) {
 
             this.tableSchemaService = TableSchemaService;
@@ -59,6 +59,8 @@ module App.Components {
         }
     }
 
-    App.getModule()
+    import {getModule} from '../app.module';      getModule()
         .service('AbstractDataModel', AbstractDataModel);
+/*
 }
+*/

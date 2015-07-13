@@ -1,4 +1,4 @@
-module App.Components.Filters {
+
     'use strict';
 
     export function FilterHelper() {
@@ -57,5 +57,5 @@ module App.Components.Filters {
             }
         };
     }
-}
+
 

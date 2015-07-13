@@ -1,5 +1,4 @@
 
-module Components.Ui.Sidebar {
     'use strict';
 
     export interface ISidebarScope extends ng.IScope {
@@ -41,8 +40,8 @@ module Components.Ui.Sidebar {
         }
     }
 
-
-    App.getModule()
+    //App.registerModule('alchemySidebar', ['mgcrea.ngStrap.collapse'])
+    import {getModule} from '../../../app.module';      getModule()
         .directive('alchemySidebar', function (): ng.IDirective {
             return {
                 restrict: 'EA',
@@ -59,4 +58,4 @@ module Components.Ui.Sidebar {
                 controller: SidebarController
             };
         });
-}
+

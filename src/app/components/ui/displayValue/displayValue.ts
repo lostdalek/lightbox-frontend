@@ -1,5 +1,4 @@
-
-module App.Components.Ui.DisplayValue {
+import {ConfigService} from '../../configuration/config.service';
     'use strict';
 
     export interface IDisplayValueScope extends ng.IScope {
@@ -26,7 +25,7 @@ module App.Components.Ui.DisplayValue {
         constructor($element: JQuery,
                     $scope: IDisplayValueScope,
                     _: _.LoDashStatic,
-                    ConfigService: App.Components.ConfigService) {
+                    ConfigService: ConfigService) {
             this.parent = this.parent.getParent();
 
             this.basePath  = <string>ConfigService.getConfig('baseUrl') + <string>ConfigService.getConfig('staticPath');
@@ -44,7 +43,7 @@ module App.Components.Ui.DisplayValue {
 
     }
 
-    App.getModule()
+    import {getModule} from '../../../app.module';      getModule()
         .directive('alchemyDisplayValue', function (): ng.IDirective {
             return {
                 restrict: 'E',
@@ -59,4 +58,4 @@ module App.Components.Ui.DisplayValue {
                 controller: DisplayValueController
             };
         });
-}
+

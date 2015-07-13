@@ -34,6 +34,14 @@ class LightboxServiceProvider implements ControllerProviderInterface, ServicePro
             return (new LightboxController($app))
               ->setDispatcher($app['dispatcher']);
         });
+        $app['controller.lightbox2.api'] = $app->share(function (PhraseaApplication $app) {
+            return (new LightboxApiController($app))
+              ->setDispatcher($app['dispatcher']);
+        });
+
+        $app['lightboxApiHelper'] = $app->share(function (PhraseaApplication $app) {
+            return (new LightboxApiHelper($app));
+        });
     }
 
     public function boot(Application $app)
@@ -58,6 +66,15 @@ class LightboxServiceProvider implements ControllerProviderInterface, ServicePro
         $controllers->get('/', 'controller.lightbox2:rootAction')
           ->bind('lightbox2')
         ;
+
+        $controllers->get('/api/basket/', 'controller.lightbox2.api:apiBasketListAction')
+          ->bind('lightbox2_api_basket_list')
+        ;
+
+        $controllers->get('/api/basket/{basket}', 'controller.lightbox2.api:apiGetBasketAction')
+          //->before($app['middleware.basket.converter'])
+          //->before($app['middleware.basket.user-access'])
+          ->assert('basket', '\d+');
 
         return $controllers;
     }

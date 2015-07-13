@@ -1,4 +1,4 @@
-module App.Components.Filters {
+import {FilterHelper} from './filterHelpers';
     'use strict';
 
     /*export interface IFilter {
@@ -46,6 +46,6 @@ module App.Components.Filters {
         }
     }
 
-    App.getModule()
+    import {getModule} from '../../app.module';      getModule()
         .filter('byCastKey', ByCastKey.Factory);
-}
+

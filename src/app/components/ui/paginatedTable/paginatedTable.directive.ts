@@ -1,5 +1,5 @@
 
-module App.Components.Ui.PaginatedTable {
+
     'use strict';
 
     interface IOrdering {
@@ -266,7 +266,7 @@ module App.Components.Ui.PaginatedTable {
         }
     }
 
-    App.getModule()
+    import {getModule} from '../../../app.module';      getModule()
         .directive('alchemyPaginatedTable', function (): ng.IDirective {
             return {
                 restrict: 'EA',
@@ -281,4 +281,4 @@ module App.Components.Ui.PaginatedTable {
                 controller: PaginatedTableController
             };
         });
-}
+

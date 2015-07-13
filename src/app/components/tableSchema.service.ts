@@ -2,7 +2,7 @@
 /**
  * Configuration Service Provider
  */
-module App.Components {
+
     'use strict';
 
 
@@ -207,6 +207,6 @@ module App.Components {
             return tableHead;
         }
     }
-    App.getModule()
+    import {getModule} from '../app.module';      getModule()
     .provider('TableSchemaService', TableSchemaService);
-}
+

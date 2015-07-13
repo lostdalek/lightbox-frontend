@@ -1,5 +1,5 @@
+import {Period} from 'periodSelector.service';
 
-module App.Components.Ui.PeriodSelector {
     'use strict';
 
     export interface IPeriodSelectorScope extends ng.IScope {
@@ -127,7 +127,7 @@ module App.Components.Ui.PeriodSelector {
         }
     }
 
-    App.getModule()
+    import {getModule} from '../../../app.module';      getModule()
         .directive('alchemyPeriodSelector', function (): ng.IDirective {
             return {
                 restrict: 'EA',
@@ -144,4 +144,4 @@ module App.Components.Ui.PeriodSelector {
                 controller: PeriodSelectorController
             };
         });
-}
+

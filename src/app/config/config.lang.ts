@@ -1,10 +1,10 @@
-module App {
+import {ConfigService} from '../components/configuration/config.service';
     'use strict';
 
     export class LangConfig {
 
         /** @ngInject */
-        constructor(ConfigServiceProvider: App.Components.ConfigService,
+        constructor(ConfigServiceProvider: ConfigService,
                     $translateProvider: angular.translate.ITranslateProvider) {
 
             var locale = (<any> ConfigServiceProvider).getConfig('locale');
@@ -63,6 +63,6 @@ module App {
 
     }
 
-    App.getModule()
+    import {getModule} from '../app.module';      getModule()
         .config(LangConfig);
-}
+

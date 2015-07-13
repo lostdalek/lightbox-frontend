@@ -1,25 +1,25 @@
 
 /**
- * Configuration Service Provider
+ * Config Service Provider
  */
-module App.Components {
+
     'use strict';
 
-    import Configuration = App.Config;
+    import {Config} from '../../config/config.global';
 
     interface IConfigService {
         getConfig(): any;
     }
 
     export class ConfigService implements ng.IServiceProvider {
-        protected config: any = Configuration.appConfig;
+        protected config: any = Config.appConfig;
 
         /**
-         * register global envConfiguration
+         * register global envConfig
          */
         constructor () {
-            var envConfiguration = (<any>window).envConfiguration || {};
-            this._registerConfig(envConfiguration);
+            var envConfig = (<any>window).envConfig || {};
+            this._registerConfig(envConfig);
         }
 
         /**
@@ -130,6 +130,6 @@ module App.Components {
         }
     }
 
-    App.getModule()
+    import {getModule} from '../../app.module';      getModule()
         .provider('ConfigService', ConfigService);
-}
+

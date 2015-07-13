@@ -1,5 +1,5 @@
 
-module App.Components.Ui.Forms {
+
     'use strict';
 
     export interface ISearchFormScope extends ng.IScope {
@@ -85,7 +85,7 @@ module App.Components.Ui.Forms {
 
     }
 
-    App.getModule()
+    import {getModule} from '../../../../app.module';      getModule()
         .directive('alchemySearchForm', function (): ng.IDirective {
             return {
                 restrict: 'EA',
@@ -100,4 +100,4 @@ module App.Components.Ui.Forms {
                 controller: SearchFormController
             };
         });
-}
+

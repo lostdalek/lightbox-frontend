@@ -1,17 +1,17 @@
-module App.Modules {
+import {PeriodSelectorService, IPeriod } from '../../components/ui/periodSelector/periodSelector.service';
     'use strict';
 
     export class ThemeController {
         public name: string;
-        public datepickr1: App.Components.Ui.PeriodSelector.IPeriod;
-        public datepickr2: App.Components.Ui.PeriodSelector.IPeriod;
+        public datepickr1: IPeriod;
+        public datepickr2: IPeriod;
         protected $translate;
 
         /** @ngInject */
 
         constructor($scope: ng.IScope,
                     $filter: ng.IFilterService,
-                    PeriodSelectorService: App.Components.Ui.PeriodSelector.PeriodSelectorService) {
+                    PeriodSelectorService: PeriodSelectorService) {
 
             this.$translate = $filter('translate');
             this.name = 'Medias controller';
@@ -42,6 +42,6 @@ module App.Modules {
 
     }
 
-    App.getModule()
+    import {getModule} from '../../app.module';      getModule()
         .controller('ThemeController', ThemeController);
-}
+

@@ -1,4 +1,4 @@
-import {PhraseanetApi} from './phraseanetApi.service';
+import {LightboxApi} from './lightboxApi.service';
     'use strict';
 
     export interface IApiParams {
@@ -10,14 +10,14 @@ import {PhraseanetApi} from './phraseanetApi.service';
     }
 
 
-    export class PhraseanetRepository {
-        protected restangular: PhraseanetApi;
+    export class LightboxRepository {
+        protected restangular: LightboxApi;
         protected route: string;
 
         /** @ngInject */
-        constructor(PhraseanetApi: PhraseanetApi, route: string) {
+        constructor(LightboxApi: LightboxApi, route: string) {
 
-            this.restangular = PhraseanetApi.getApi();
+            this.restangular = LightboxApi.getApi();
             this.route = route;
 
         }

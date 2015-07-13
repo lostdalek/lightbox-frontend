@@ -1,6 +1,4 @@
 
-
-module App.Components.Ui.PeriodSelector {
     'use strict';
 
     interface IPeriodConfig {
@@ -172,6 +170,6 @@ module App.Components.Ui.PeriodSelector {
 
     }
 
-    App.getModule()
+    import {getModule} from '../../../app.module';      getModule()
         .service('PeriodSelectorService', PeriodSelectorService);
-}
+

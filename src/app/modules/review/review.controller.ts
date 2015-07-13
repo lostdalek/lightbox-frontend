@@ -1,4 +1,4 @@
-module App.Modules {
+
     'use strict';
 
     export class ReviewController {
@@ -11,6 +11,6 @@ module App.Modules {
         */
     }
 
-    App.getModule()
+    import {getModule} from '../../app.module';      getModule()
         .controller('ReviewController', ReviewController);
-}
+

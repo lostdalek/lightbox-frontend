@@ -1,5 +1,5 @@
+import {ConfigService} from '../components/configuration/config.service';
 
-module App {
     'use strict';
 
     interface ILocale {
@@ -31,7 +31,7 @@ module App {
         /** @ngInject */
         constructor($logProvider: ng.ILogProvider,
                     toastr: Toastr,
-                    ConfigServiceProvider: App.Components.ConfigService ) {
+                    ConfigServiceProvider: ConfigService ) {
             // enable log
             $logProvider.debugEnabled(true);
             // set options third-party lib
@@ -57,6 +57,6 @@ module App {
 
     }
 
-   App.getModule()
+   import {getModule} from '../app.module';      getModule()
        .config(Config);
-}
+

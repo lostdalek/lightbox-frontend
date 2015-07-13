@@ -1,11 +1,13 @@
-module App.Components {
+import {AbstractDataModel} from 'abstractDataModel';
+import {TableSchemaService} from 'tableSchema.service';
+
     'use strict';
 
     export class AbstractDataService {
-        public abstractDataModel: App.Components.AbstractDataModel;
-        public tableSchemaService: App.Components.TableSchemaService;
+        public abstractDataModel: AbstractDataModel;
+        public tableSchemaService: TableSchemaService;
 
-        constructor(AbstractDataModel: App.Components.AbstractDataModel, TableSchemaService: App.Components.TableSchemaService) {
+        constructor(AbstractDataModel: AbstractDataModel, TableSchemaService: TableSchemaService) {
             this.abstractDataModel = AbstractDataModel;
             this.tableSchemaService = TableSchemaService;
         }
@@ -17,6 +19,6 @@ module App.Components {
         }
     }
 
-    App.getModule()
+    import {getModule} from '../app.module';      getModule()
         .service('AbstractDataService', AbstractDataService);
-}
+

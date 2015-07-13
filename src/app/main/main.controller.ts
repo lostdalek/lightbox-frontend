@@ -1,4 +1,4 @@
-module App {
+import {ConfigService} from '../components/configuration/config.service';
     'use strict';
 
     export class MainController {
@@ -10,7 +10,7 @@ module App {
 
         /** @ngInject */
         constructor(toastr: Toastr,
-                    ConfigService: App.Components.ConfigService,
+                    ConfigService: ConfigService,
                     $scope: ng.IScope,
                     $filter: ng.IFilterService,
                     $state: ng.ui.IStateService) {
@@ -64,7 +64,7 @@ module App {
                     iconClasses: 'glyphicon glyphicon-dashboard',
                     // href: '',
                     parent: 'main.dashboard',
-                    sref: 'main.dashboard'
+                    sref: 'main.dashboard',
 
                 }, {
                     label: this.$translate('app.link.label.medias'),
@@ -72,7 +72,15 @@ module App {
                     iconClasses: 'glyphicon glyphicon-picture',
                     // href: '',
                     parent: 'main.medias',
-                    sref: 'main.medias.list'
+                    sref: 'main.medias.list',
+                    children: [{
+                        label: this.$translate('app.link.label.medias'),
+                        icon: true,
+                        iconClasses: 'glyphicon glyphicon-picture',
+                        // href: '',
+                        parent: 'main.medias',
+                        sref: 'main.medias.list',
+                    }]
 
                 }, {
                     label: this.$translate('app.link.label.user'),
@@ -96,6 +104,6 @@ module App {
         }
     }
 
-    App.getModule()
+    import {getModule} from '../app.module';      getModule()
         .controller('MainController', MainController);
-}
+

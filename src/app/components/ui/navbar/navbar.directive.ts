@@ -1,5 +1,5 @@
 
-module Components.Ui.Navbar {
+
     'use strict';
 
     export interface INavbarScope extends ng.IScope {
@@ -41,7 +41,7 @@ module Components.Ui.Navbar {
     }
 
 
-    App.getModule()
+    import {getModule} from '../../../app.module';      getModule()
         .directive('alchemyNavbar', function (): ng.IDirective {
             return {
                 restrict: 'EA',
@@ -57,4 +57,4 @@ module Components.Ui.Navbar {
                 controller: NavbarController
             };
         });
-}
+

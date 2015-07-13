@@ -1,15 +1,15 @@
 import {ConfigService} from '../configuration/config.service';
     'use strict';
 
-    export interface IPhraseanetApiError {
+    export interface ILightboxApiError {
         code: number;
         message: string;
     }
     /**
-     * Dedicated configuration for phraseanet API
+     * Dedicated configuration for lightbox API
      *
      */
-    export class PhraseanetApi {
+    export class LightboxApi {
         protected api;
 
         /** @ngInject */
@@ -18,14 +18,16 @@ import {ConfigService} from '../configuration/config.service';
                     ConfigService: ConfigService,
                     $state: ng.ui.IStateService) {
 
-            var baseUrl = <string>ConfigService.getConfig('phraseanetApi.baseUrl');
-            var basePath = <string>ConfigService.getConfig('phraseanetApi.basePath');
+            var baseUrl = <string>ConfigService.getConfig('lightboxApi.baseUrl');
+            var basePath = <string>ConfigService.getConfig('lightboxApi.basePath');
+
+            console.log('setup lightbox', baseUrl, basePath)
 
             if (baseUrl === null ) {
-                throw new Error('Phraseanet Api baseUrl can\'t be null');
+                throw new Error('Lightbox Api baseUrl can\'t be null');
             }
             if (basePath === null ) {
-                throw new Error('Phraseanet Api basePath can\'t be null');
+                throw new Error('Lightbox Api basePath can\'t be null');
             }
 
             this.api = Restangular.withConfig( function (RestangularConfigurer: restangular.IProvider) {
@@ -74,6 +76,6 @@ import {ConfigService} from '../configuration/config.service';
     }
 
     import {getModule} from '../../app.module';      getModule()
-        .service('PhraseanetApi', PhraseanetApi);
+        .service('LightboxApi', LightboxApi);
 
 
