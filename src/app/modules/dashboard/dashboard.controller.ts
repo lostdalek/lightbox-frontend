@@ -1,7 +1,11 @@
-import {ConfigService} from '../../components/configuration/config.service';
-import {DashboardService} from 'dashboard.service';
 'use strict';
+import * as clientConfig from '../../client.config';
+import {ngController} from '../../ng.decorators';
 
+//import {ConfigService} from '../../components/configuration/config.service';
+import * as dashboard from './dashboard.service';
+
+@ngController
 export class DashboardController {
     public navbladeConfig;
     public basketCollection = [];
@@ -12,14 +16,13 @@ export class DashboardController {
     protected dashboardService;
 
     /** @ngInject */
-
-    constructor($scope:ng.IScope,
-                ConfigService: ConfigService,
-                DashboardService: DashboardService,
-                $filter:ng.IFilterService) {
+    constructor($scope: ng.IScope,
+                ConfigService: any,
+                DashboardService: dashboard.IDashboardService,
+                $filter: ng.IFilterService) {
 
         var appConfig = ConfigService.getConfig();
-        this.clientConfig = ClientConfig.getClientConfig();
+        this.clientConfig = clientConfig.getClientConfig();
         this.dashboardService = DashboardService;
         this.$translate = $filter('translate');
         this.$scope = $scope;
@@ -69,7 +72,4 @@ export class DashboardController {
 
 
 }
-
-import {getModule} from '../../app.module';      getModule()
-    .controller('DashboardController', DashboardController);
 

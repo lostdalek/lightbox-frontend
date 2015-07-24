@@ -85,6 +85,7 @@
 
     }
 
+/*
     import {getModule} from '../../../../app.module';      getModule()
         .directive('alchemySearchForm', function (): ng.IDirective {
             return {
@@ -101,3 +102,4 @@
             };
         });
 
+*/

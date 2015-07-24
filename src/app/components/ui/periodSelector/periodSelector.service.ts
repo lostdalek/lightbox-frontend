@@ -169,7 +169,9 @@
         }
 
     }
+/*
 
     import {getModule} from '../../../app.module';      getModule()
         .service('PeriodSelectorService', PeriodSelectorService);
 
+*/

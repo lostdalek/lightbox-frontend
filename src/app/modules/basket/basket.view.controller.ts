@@ -1,5 +1,5 @@
 import {BasketService} from 'basket.service';
-import {getModule} from '../../app.module';
+
 'use strict';
 
 interface IBasketViewParams extends ng.ui.IStateParamsService {
@@ -34,7 +34,3 @@ export class BasketViewController {
             });
     }
 }
-
-getModule()
-    .controller('BasketViewController', BasketViewController);
-

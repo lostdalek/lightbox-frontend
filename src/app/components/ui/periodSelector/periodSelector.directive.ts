@@ -127,6 +127,7 @@ import {Period} from 'periodSelector.service';
         }
     }
 
+/*
     import {getModule} from '../../../app.module';      getModule()
         .directive('alchemyPeriodSelector', function (): ng.IDirective {
             return {
@@ -144,4 +145,5 @@ import {Period} from 'periodSelector.service';
                 controller: PeriodSelectorController
             };
         });
+*/
 

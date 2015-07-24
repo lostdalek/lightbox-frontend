@@ -72,8 +72,10 @@ import {ConfigService} from '../configuration/config.service';
             return this.api;
         }
     }
+/*
 
     import {getModule} from '../../app.module';      getModule()
         .service('PhraseanetApi', PhraseanetApi);
 
 
+*/

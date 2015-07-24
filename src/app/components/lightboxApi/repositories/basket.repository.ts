@@ -1,27 +1,24 @@
-import {LightboxApi} from'../lightboxApi.service';
-import {LightboxRepository} from'../lightboxRepository'
-    'use strict';
+import {ILightboxApi} from'../lightboxApi.service';
+import {LightboxRepository} from'../lightboxRepository';
+import {ngService} from '../../../ng.decorators';
+'use strict';
 
-    export class BasketRepository extends LightboxRepository {
+@ngService
+export class BasketRepository extends LightboxRepository {
 
-        /** @ngInject */
-        constructor(LightboxApi: LightboxApi) {
-            var route = 'basket';
+    /** @ngInject */
+    constructor(LightboxApi: ILightboxApi) {
+        var route = 'basket';
 
-            super(LightboxApi, route);
-            console.log('brepo', LightboxApi)
-        }
-        // list all record views by user and date range
-        public getList(apiParams: any) {
-           return (<any>this.restangular).all( this.route +'/' )
-                // .withHttpConfig({ cache: true })
-                .getList( this.validateParams(apiParams) );
-        }
-
+        super(LightboxApi, route);
+        console.log('brepo', LightboxApi)
+    }
+    // list all record views by user and date range
+    public getList(apiParams: any) {
+       return (<any>this.restangular).all( this.route +'/' )
+            // .withHttpConfig({ cache: true })
+            .getList( this.validateParams(apiParams) );
     }
 
-
-    import {getModule} from '../../../app.module';      getModule()
-        .service('LightboxBasketRepository', BasketRepository);
-
+}
 

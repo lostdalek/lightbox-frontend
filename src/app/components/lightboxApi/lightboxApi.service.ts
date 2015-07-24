@@ -1,81 +1,86 @@
-import {ConfigService} from '../configuration/config.service';
-    'use strict';
+'use strict';
 
-    export interface ILightboxApiError {
-        code: number;
-        message: string;
-    }
-    /**
-     * Dedicated configuration for lightbox API
-     *
-     */
-    export class LightboxApi {
-        protected api;
+import {ConfigService, IConfigServiceProvider} from '../configuration/config.service';
+import {ngService} from '../../ng.decorators';
 
-        /** @ngInject */
-        constructor(Restangular: restangular.IService,
-                    _: _.LoDashStatic,
-                    ConfigService: ConfigService,
-                    $state: ng.ui.IStateService) {
+export interface ILightboxApiError {
+    code: number;
+    message: string;
+}
+/**
+ * Dedicated configuration for lightbox API
+ *
+ */
+export interface ILightboxApi {
+    getApi(): any;
+}
 
-            var baseUrl = <string>ConfigService.getConfig('lightboxApi.baseUrl');
-            var basePath = <string>ConfigService.getConfig('lightboxApi.basePath');
+    
+@ngService
+export class LightboxApi implements ILightboxApi{
+    protected api;
 
-            console.log('setup lightbox', baseUrl, basePath)
+    /** @ngInject */
+    constructor(Restangular: restangular.IService,
+                _: _.LoDashStatic,
+                ConfigService: IConfigServiceProvider,
+                $state: ng.ui.IStateService) {
 
-            if (baseUrl === null ) {
-                throw new Error('Lightbox Api baseUrl can\'t be null');
-            }
-            if (basePath === null ) {
-                throw new Error('Lightbox Api basePath can\'t be null');
-            }
+        console.log('>>>>>', ConfigService, ConfigService.getConfig('lightboxApi.baseUrl'))
 
-            this.api = Restangular.withConfig( function (RestangularConfigurer: restangular.IProvider) {
+        var baseUrl = <string>ConfigService.getConfig('lightboxApi.baseUrl');
+        var basePath = <string>ConfigService.getConfig('lightboxApi.basePath');
 
-                (<any>RestangularConfigurer)
-                    .setDefaultHeaders({
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json'
-                    })
-                    .setBaseUrl(baseUrl + basePath)
-                    .setErrorInterceptor(function(response: any, deferred: any, responseHandler: any) {
-                        if ( response.status === 401) {
-                            $state.go('main.unauthorized');
-                            return false; // error handled
-                        }/* else if() {
+        console.log('setup lightbox', baseUrl, basePath)
 
-                        }*/
+        if (baseUrl === null ) {
+            throw new Error('Lightbox Api baseUrl can\'t be null');
+        }
+        if (basePath === null ) {
+            throw new Error('Lightbox Api basePath can\'t be null');
+        }
 
-                        return false; // error not handled
-                    })
-                    .addResponseInterceptor(function(responseData: any, operation: any, what: any, url: any, response: any, deferred: any) {
+        this.api = Restangular.withConfig( function (RestangularConfigurer: restangular.IProvider) {
 
-                        // console.log(responseData, operation, what, url, response)
-                        var extractedData;
-                        extractedData = {};
-                        // if (operation === 'getList') {
-                            if ( responseData.hasOwnProperty('data')) {
-                                extractedData = responseData.data;
+            (<any>RestangularConfigurer)
+                .setDefaultHeaders({
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                })
+                .setBaseUrl(baseUrl + basePath)
+                .setErrorInterceptor(function(response: any, deferred: any, responseHandler: any) {
+                    if ( response.status === 401) {
+                        $state.go('main.unauthorized');
+                        return false; // error handled
+                    }/* else if() {
 
-                                if ( responseData.hasOwnProperty('meta') ) {
-                                    extractedData.meta = responseData.meta;
-                                }
-                            } else {
-                                extractedData = responseData;
+                    }*/
+
+                    return false; // error not handled
+                })
+                .addResponseInterceptor(function(responseData: any, operation: any, what: any, url: any, response: any, deferred: any) {
+
+                    // console.log(responseData, operation, what, url, response)
+                    var extractedData;
+                    extractedData = {};
+                    // if (operation === 'getList') {
+                        if ( responseData.hasOwnProperty('data')) {
+                            extractedData = responseData.data;
+
+                            if ( responseData.hasOwnProperty('meta') ) {
+                                extractedData.meta = responseData.meta;
                             }
-                        // }
+                        } else {
+                            extractedData = responseData;
+                        }
+                    // }
 
-                        return extractedData;
-                    });
-            });
-        }
-
-        public getApi() {
-            return this.api;
-        }
+                    return extractedData;
+                });
+        });
     }
 
-    import {getModule} from '../../app.module';      getModule()
-        .service('LightboxApi', LightboxApi);
-
-
+    public getApi() {
+        return this.api;
+    }
+}

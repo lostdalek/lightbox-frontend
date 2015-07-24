@@ -1,36 +1,37 @@
-import {TableSchemaService} from '../../components/tableSchema.service';
-import {BasketRepository} from '../../components/lightboxApi/repositories/basket.repository';
-    'use strict';
+'use strict';
+import * as components from '../../components/components';
+import {ngService} from '../../ng.decorators';
 
-    export class DashboardService {
-        protected $filter;
-        protected $q;
-        protected tableSchemaService: TableSchemaService;
-        protected tableSchema;
-        protected $translate;
-        protected basketRepository;
+export interface IDashboardService {
 
+}
 
-        /** @ngInject */
-        constructor($filter: ng.IFilterService,
-                    $q: ng.IQService,
-                    LightboxBasketRepository: BasketRepository,
-                    TableSchemaService: TableSchemaService) {
+@ngService
+export class DashboardService implements IDashboardService {
+    protected $filter;
+    protected $q;
+    protected tableSchemaService: components.ITableSchemaService;
+    protected tableSchema;
+    protected $translate;
+    protected basketRepository;
 
 
-            this.tableSchemaService = TableSchemaService;
-            this.$q = $q;
-            this.$filter = $filter;
-            this.$translate = $filter('translate');
+    /** @ngInject */
+    constructor($filter: ng.IFilterService,
+                $q: ng.IQService,
+                BasketRepository: components.BasketRepository,
+                TableSchemaService: components.ITableSchemaService) {
 
-            this.basketRepository = LightboxBasketRepository;
-        }
 
-        public getBasketCollection() {
-            return this.basketRepository.getList();
-        }
+        this.tableSchemaService = TableSchemaService;
+        this.$q = $q;
+        this.$filter = $filter;
+        this.$translate = $filter('translate');
+
+        this.basketRepository = BasketRepository;
     }
 
-    import {getModule} from '../../app.module';      getModule()
-        .service('DashboardService', DashboardService);
-
+    public getBasketCollection() {
+        return this.basketRepository.getList();
+    }
+}

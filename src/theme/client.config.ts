@@ -1,3 +1,2 @@
-
-
-/// <reference path="./default/client.config.ts" />
+'use strict';
+export * from './default/client.config';

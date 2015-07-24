@@ -51,6 +51,7 @@
     }
 
 
+/*
     import {getModule} from '../../../app.module';      getModule()
         .directive('alchemyNavblade', function (): ng.IDirective {
             return {
@@ -70,3 +71,4 @@
             };
         });
 
+*/

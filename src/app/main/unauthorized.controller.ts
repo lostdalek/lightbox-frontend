@@ -1,5 +1,8 @@
-
     'use strict';
+
+interface IUnauthorizedScope extends ng.IScope {
+
+}
 
     export class UnauthorizedController {
         protected $translate;
@@ -47,7 +50,4 @@
         }
 
     }
-
-    import {getModule} from '../app.module';      getModule()
-        .controller('UnauthorizedController', UnauthorizedController);
 

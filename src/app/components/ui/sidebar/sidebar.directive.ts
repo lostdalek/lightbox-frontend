@@ -40,7 +40,9 @@
         }
     }
 
+
     //App.registerModule('alchemySidebar', ['mgcrea.ngStrap.collapse'])
+/*
     import {getModule} from '../../../app.module';      getModule()
         .directive('alchemySidebar', function (): ng.IDirective {
             return {
@@ -59,3 +61,4 @@
             };
         });
 
+*/

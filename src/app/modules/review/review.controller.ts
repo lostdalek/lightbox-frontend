@@ -1,16 +1,12 @@
+'use strict';
+import {ngController} from '../../ng.decorators';
+@ngController
+export class ReviewController {
 
-    'use strict';
+    /** @ngInject */
+    /*
+    constructor() {
 
-    export class ReviewController {
-
-        /** @ngInject */
-        /*
-        constructor() {
-
-        }
-        */
     }
-
-    import {getModule} from '../../app.module';      getModule()
-        .controller('ReviewController', ReviewController);
-
+    */
+}

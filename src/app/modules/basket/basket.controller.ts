@@ -1,16 +1,13 @@
+'use strict';
+import {ngController} from '../../ng.decorators';
 
-    'use strict';
+@ngController
+export class BasketController {
 
-    export class BasketController {
+    /** @ngInject */
+    /*
+    constructor() {
 
-        /** @ngInject */
-        /*
-        constructor() {
-
-        }
-        */
     }
-
-    import {getModule} from '../../app.module';      getModule()
-        .controller('BasketController', BasketController);
-
+    */
+}

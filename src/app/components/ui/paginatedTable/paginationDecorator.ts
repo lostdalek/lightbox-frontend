@@ -19,7 +19,9 @@
         }
 
     }
+/*
 
     import {getModule} from '../../../app.module';      getModule()
         .config(PaginationDecorator);
 
+*/

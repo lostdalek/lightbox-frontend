@@ -15,6 +15,7 @@ exports.paths = {
   src: 'src',
   dist: '.dist',
   tmp: '.tmp',
+  tmpts: '.tmpts',
   deploy: 'silex-provider/public',
   baseClientConfig: 'src/theme/default',
   useClientConfig: 'src/theme/default',

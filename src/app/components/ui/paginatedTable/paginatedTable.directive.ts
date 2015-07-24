@@ -265,7 +265,7 @@
             this.storage.set(this.tableOptions.id, _.merge(wholePrefs, newPref));
         }
     }
-
+/*
     import {getModule} from '../../../app.module';      getModule()
         .directive('alchemyPaginatedTable', function (): ng.IDirective {
             return {
@@ -280,5 +280,5 @@
                 link: PaginatedTableLink,
                 controller: PaginatedTableController
             };
-        });
+        });*/
 

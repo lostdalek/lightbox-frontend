@@ -1,12 +1,14 @@
+'use strict';
 import {ConfigService} from '../components/configuration/config.service';
-    'use strict';
+import {ngConfig} from '../ng.decorators';
 
-    export class LangConfig {
+@ngConfig
+export class ConfigLang {
+    /** @ngInject */
+    public static Factory(ConfigServiceProvider: ConfigService,
+                          $translateProvider: angular.translate.ITranslateProvider) {
 
-        /** @ngInject */
-        constructor(ConfigServiceProvider: ConfigService,
-                    $translateProvider: angular.translate.ITranslateProvider) {
-
+        //return function () {
             var locale = (<any> ConfigServiceProvider).getConfig('locale');
             $translateProvider.translations('en', {
                 'app.name': 'Reports',
@@ -59,10 +61,6 @@ import {ConfigService} from '../components/configuration/config.service';
             $translateProvider
                 .useSanitizeValueStrategy('escaped')
                 .preferredLanguage(locale);
-        }
-
+        //}
     }
-
-    import {getModule} from '../app.module';      getModule()
-        .config(LangConfig);
-
+}

@@ -40,6 +40,7 @@
         }
     }
 
+/*
 
     import {getModule} from '../../../app.module';      getModule()
         .directive('alchemyNavbar', function (): ng.IDirective {
@@ -58,3 +59,4 @@
             };
         });
 
+*/
