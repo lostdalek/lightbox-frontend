@@ -3,21 +3,20 @@
 var path = require('path');
 var gulp = require('gulp');
 var conf = require('./conf');
-
+var webpack = require("webpack");
+var ngAnnotatePlugin = require('ng-annotate-webpack-plugin');
 var browserSync = require('browser-sync');
 
 var $ = require('gulp-load-plugins')();
 
-  var tsProject = $.typescript.createProject({
-    target: 'ES5',
+var tsProject = $.typescript.createProject({
+    target: 'ES6',
     sortOutput: true,
-      emitDecoratorMetadata: true,
-      experimentalDecorators: true,
-    //module: 'UMD',
-    module: 'commonjs',
+    emitDecoratorMetadata: true,
+    experimentalDecorators: true,
+    //module: 'commonjs',
     typescript: require('typescript') // require('../../TypeScript/built/local/typescript')
-  });
-
+});
 
 gulp.task('tsd-scripts', ['tsd:install'], function () {
 
@@ -28,9 +27,6 @@ gulp.task('tsd-scripts', ['tsd:install'], function () {
     .pipe($.tslint())
     .pipe($.tslint.report('prose', { emitError: false }))
     .pipe($.typescript(tsProject)).on('error', conf.errorHandler('TypeScript'))
-
-
-
 
     //.pipe($.concat('app.module.js'))
     //.pipe($.sourcemaps.write())
@@ -43,8 +39,18 @@ gulp.task('scripts', ['tsd-scripts'], function () {
     var watch = false;
     var webpackOptions = {
         watch: watch,
+        plugins: [
+            new ngAnnotatePlugin({
+                add: true
+            }),
+            new webpack.optimize.UglifyJsPlugin({
+                mangle: false,
+                compress: {
+                    // unused: false, dead_code: false, warnings: true
+                }
+            })
+        ],
         module: {
-            // preLoaders: [{ test: /\.js$/, exclude: /node_modules/, loader: 'jshint-loader'}],
             loaders: [{ test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader'}]
         },
         output: { filename: 'index.module.js' }
@@ -73,14 +79,4 @@ gulp.task('scripts', ['tsd-scripts'], function () {
     return gulp.src([path.join(conf.paths.tmpts, '/serve/app/app.module.js')])
         .pipe($.webpack(webpackOptions, null, webpackChangeHandler))
         .pipe(gulp.dest(path.join(conf.paths.tmp, '/serve/app')))
-
-
-
-   // return webpack(false);
-  /*return gulp.src([path.join(conf.paths.tmp, '/serve/app/app.module.js')])
-      .pipe($.babel())
-      //.pipe($.concat('index.module.js'))
-      .pipe(gulp.dest(path.join(conf.paths.tmp, '/serve/app')))
-      .pipe(browserSync.reload({ stream: true }))
-      .pipe($.size())*/
 });

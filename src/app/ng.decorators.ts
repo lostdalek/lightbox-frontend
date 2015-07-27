@@ -16,9 +16,7 @@ const app = angular.module(appName, [
 
 var getApp = () => {
     return app;
-}
-
-
+};
 
 var ngController = (target: any) => {
     console.log('target name:', target.name);
@@ -34,15 +32,19 @@ var ngConfig = (target: any) => {
         getApp().config(descriptor.value);
     };*/
 };
+
 var ngService = (target: any) => {
     getApp().service(target.name, target);
 };
+
 var ngDirective= (target: any) => {
     getApp().directive(target.name, target);
 };
+
 var ngFilter = (target: any) => {
     getApp().filter(target.name, target.Factory);
 };
+
 var ngInject = (...dependencies) => {
     // target.$inject = dependencies;
     /*

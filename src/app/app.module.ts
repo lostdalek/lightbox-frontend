@@ -5,16 +5,16 @@
 'use strict';
 import {ConfigService} from './components/configuration/config.service';
 import * as config from './config/config';
-config; // Force typescript to import non explicitly used modules
+var c = config; // Force typescript to import non explicitly used modules
 
 import * as mainApp from './main/module';
-mainApp; // Force typescript to import non explicitly used modules
+var a = mainApp; // Force typescript to import non explicitly used modules
 
 import * as basket from './modules/basket/module';
-basket; // Force typescript to import non explicitly used modules
+var b = basket; // Force typescript to import non explicitly used modules
 
 import * as dashboard from './modules/dashboard/module';
-dashboard; // Force typescript to import non explicitly used modules
+var d = dashboard; // Force typescript to import non explicitly used modules
 
 import { getApp, appName } from './ng.decorators';
 
@@ -25,13 +25,13 @@ getApp()
     .constant('_', _)
     .run(runBlock);
 console.log(getApp())
-/*
-angular.element(document).ready(function() {
+
+/*angular.element(document).ready(function() {
     angular.bootstrap(document, [appName], {
-        // strictDi: true
+         strictDi: true
     });
-});
-*/
+});*/
+
 
 /** @ngInject */
 export function runBlock($log: ng.ILogService) {
